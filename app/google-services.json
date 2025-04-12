@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "66820744191",
+    "project_id": "autoalkatreszwebshop",
+    "storage_bucket": "autoalkatreszwebshop.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:66820744191:android:dfb0167a967bcfad14fdca",
+        "android_client_info": {
+          "package_name": "com.example.autoalkatreszshop"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDW2ez5wF08si4imDME--s3r64neQ_c2d0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
