@@ -12,7 +12,6 @@
         android:theme="@style/Theme.Autoalkatreszwebshop"
         tools:targetApi="31">
 
-        <!-- LoginActivity -->
         <activity android:name=".LoginActivity"
             android:label="@string/login"
             android:exported="true">
@@ -22,7 +21,6 @@
             </intent-filter>
         </activity>
 
-        <!-- MainActivity -->
         <activity android:name=".MainActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".ForgotPasswordActivity" />

@@ -1,6 +1,6 @@
 package com.example.autoalkatreszshop;
 
-import android.content.Intent; // Importálva van az Intent osztály
+import android.content.Intent; 
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -12,22 +12,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main); // Betölti az activity_main.xml-t
-
-        // Firebase bejelentkezett felhasználó lekérése
+        setContentView(R.layout.activity_main); 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         String userEmail = mAuth.getCurrentUser() != null ? mAuth.getCurrentUser().getEmail() : "Vendég";
 
-        // Üdvözlő üzenet frissítése
         TextView greetingText = findViewById(R.id.greetingText);
         greetingText.setText("Üdvözöllek, " + userEmail + "!");
 
-        // Példa gomb hozzáadása
         Button logoutBtn = findViewById(R.id.logoutBtn);
         logoutBtn.setOnClickListener(v -> {
             mAuth.signOut();
-            // Logout után visszairányítás a login oldalra
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class); // Intent hozzáadása
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class); 
             startActivity(intent);
             finish();
         });
