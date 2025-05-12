@@ -16,6 +16,7 @@ import java.util.List;
 
 public class CartFragment extends Fragment {
 
+<<<<<<< HEAD
   private RecyclerView recyclerView;
   private Button checkoutButton;
 
@@ -60,4 +61,16 @@ public class CartFragment extends Fragment {
     // Vásárlás logikája (pl. Firebase vagy adatbázis frissítése, rendelés létrehozása)
     Toast.makeText(getContext(), "Vásárlás befejezve!", Toast.LENGTH_SHORT).show();
   }
+=======
+    public CartFragment() {
+        
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        
+        return inflater.inflate(R.layout.fragment_cart, container, false);
+    }
+>>>>>>> b6302f8fcfa09f97afaa4fe0b6dbe66bc663ce44
 }

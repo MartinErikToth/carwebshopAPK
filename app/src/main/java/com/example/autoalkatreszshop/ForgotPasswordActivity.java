@@ -17,7 +17,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_forgot_password); // Betölti a layout-ot
+        setContentView(R.layout.activity_forgot_password); 
 
         mAuth = FirebaseAuth.getInstance();
         emailEditText = findViewById(R.id.emailEditText);
@@ -42,12 +42,11 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         Toast.makeText(this, "Jelszó visszaállító email elküldve!", Toast.LENGTH_SHORT).show();
-                        // Várakozás után vissza a login activity-re
                         new Handler().postDelayed(() -> {
                             Intent intent = new Intent(ForgotPasswordActivity.this, LoginActivity.class);
                             startActivity(intent);
-                            finish(); // Bezárja a ForgotPasswordActivity-t
-                        }, 2000); // 2 másodperces várakozás
+                            finish(); 
+                        }, 2000); 
                     } else {
                         Toast.makeText(this, "Hiba történt. Próbáld újra!", Toast.LENGTH_SHORT).show();
                     }

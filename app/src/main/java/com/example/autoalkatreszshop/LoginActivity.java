@@ -33,11 +33,9 @@ public class LoginActivity extends AppCompatActivity {
         TextInputEditText passwordEditText = findViewById(R.id.password);
 
         passwordLayout.setEndIconOnClickListener(v -> {
-            // Ha a jelszó el van rejtve, változtassuk meg, hogy látható legyen
             if (passwordEditText.getTransformationMethod() instanceof PasswordTransformationMethod) {
                 passwordEditText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
             } else {
-                // Ha már látszik, akkor változtassuk meg, hogy el legyen rejtve
                 passwordEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
             }
         });
@@ -68,7 +66,6 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    // Elfelejtett jelszó funkció
     public void onForgotPasswordClick(View view) {
         Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
         startActivity(intent);

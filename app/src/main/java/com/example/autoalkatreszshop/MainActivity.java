@@ -1,6 +1,10 @@
 package com.example.autoalkatreszshop;
 
+<<<<<<< HEAD
 import android.content.Intent;
+=======
+import android.content.Intent; 
+>>>>>>> b6302f8fcfa09f97afaa4fe0b6dbe66bc663ce44
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,6 +21,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+<<<<<<< HEAD
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -27,6 +32,25 @@ public class MainActivity extends AppCompatActivity {
       getSupportFragmentManager().beginTransaction()
         .replace(R.id.fragment_container, new HomeFragment())
         .commit();
+=======
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main); 
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        String userEmail = mAuth.getCurrentUser() != null ? mAuth.getCurrentUser().getEmail() : "Vendég";
+
+        TextView greetingText = findViewById(R.id.greetingText);
+        greetingText.setText("Üdvözöllek, " + userEmail + "!");
+
+        Button logoutBtn = findViewById(R.id.logoutBtn);
+        logoutBtn.setOnClickListener(v -> {
+            mAuth.signOut();
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class); 
+            startActivity(intent);
+            finish();
+        });
+>>>>>>> b6302f8fcfa09f97afaa4fe0b6dbe66bc663ce44
     }
 
     // Bottom Navigation beállítása

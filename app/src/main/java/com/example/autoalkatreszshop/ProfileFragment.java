@@ -19,6 +19,7 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class ProfileFragment extends Fragment {
 
+<<<<<<< HEAD
   private FirebaseAuth mAuth;
   private TextView emailValue;
   private EditText newEmailInput, newPasswordInput;
@@ -82,6 +83,15 @@ public class ProfileFragment extends Fragment {
       }
     } else {
       Toast.makeText(getContext(), "Kérjük, adja meg az új e-mail címet!", Toast.LENGTH_SHORT).show();
+=======
+    public ProfileFragment() {
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_profile, container, false);
+>>>>>>> b6302f8fcfa09f97afaa4fe0b6dbe66bc663ce44
     }
   }
 
