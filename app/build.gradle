@@ -32,7 +32,9 @@ android {
 }
 
 dependencies {
-    implementation 'com.google.firebase:firebase-auth:23.2.0'
+    implementation 'com.google.firebase:firebase-auth:21.0.3' // Legújabb Firebase Auth verzió
+    implementation 'com.google.firebase:firebase-firestore:24.3.0' // Legújabb Firestore verzió
+    implementation 'com.google.firebase:firebase-database:20.2.0' // Ha használod a Firebase Database-t
     implementation 'com.google.android.material:material:1.11.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'

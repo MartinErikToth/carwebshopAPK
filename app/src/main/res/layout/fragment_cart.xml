@@ -1,12 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="#F5F5F5"
+  tools:context=".CartFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ez a Kosár oldal"
-        android:textSize="20sp"
-        android:layout_gravity="center" />
-</FrameLayout>
+  <!-- Kosár cím -->
+  <TextView
+    android:id="@+id/cartTitle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="🛒 Kosarad"
+    android:textSize="26sp"
+    android:textStyle="bold"
+    android:textColor="#212121"
+    android:layout_marginTop="24dp"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:gravity="center" />
+
+  <!-- Kosár elemek listája -->
+  <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/cartRecyclerView"
+    android:layout_width="0dp"
+    android:layout_height="550dp"
+    android:layout_marginTop="16dp"
+    android:padding="8dp"
+    android:clipToPadding="false"
+    app:layout_constraintTop_toBottomOf="@id/cartTitle"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintBottom_toTopOf="@id/checkoutButton" />
+
+  <!-- Vásárlás gomb -->
+  <Button
+    android:id="@+id/checkoutButton"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:text="✔ Vásárlás befejezése"
+    android:textAllCaps="false"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginBottom="8dp"
+    android:textColor="#FFFFFF"
+    android:backgroundTint="#4CAF50"
+    android:elevation="4dp"
+    app:layout_constraintTop_toBottomOf="@id/cartRecyclerView"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
