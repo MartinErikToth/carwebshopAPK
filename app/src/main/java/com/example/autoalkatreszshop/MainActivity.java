@@ -42,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
         selectedFragment = new CartFragment();
       } else if (item.getItemId() == R.id.nav_profile) {
         selectedFragment = new ProfileFragment();
+      } else if (item.getItemId() == R.id.nav_products) {
+        selectedFragment = new ProductAddFragment();
       }
 
       // Csak akkor cseréljük le a fragmentet, ha szükséges
@@ -57,23 +59,4 @@ public class MainActivity extends AppCompatActivity {
     // Kijelöljük alapból a home itemet
     bottomNav.setSelectedItemId(R.id.nav_home);
   }
-
-  private void loadProductsToFirestore() {
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-    // Ha a termékeket csak egyszer akarjuk feltölteni
-    List<Products> products = Arrays.asList(
-      new Products("1", "Féktárcsa Bosch", 14990.0, "https://example.com/fektarcsa.jpg"),
-      new Products("2", "Olajszűrő Mann-Filter", 3990.0, "https://example.com/olajszuro.jpg"),
-      new Products("3", "Gyújtógyertya NGK", 2490.0, "https://example.com/gyertya.jpg"),
-      new Products("4", "Akkumulátor Varta 60Ah", 38990.0, "https://example.com/akku.jpg")
-    );
-
-    for (Products product : products) {
-      db.collection("products")
-        .document(product.getId())
-        .set(product);
-    }
-  }
-
 }
