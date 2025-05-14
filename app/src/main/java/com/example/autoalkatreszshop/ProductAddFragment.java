@@ -61,6 +61,7 @@ public class ProductAddFragment extends Fragment {
     db.collection("products")
       .add(product)
       .addOnSuccessListener(documentReference -> {
+        addToCart(product);
         Toast.makeText(getContext(), "Termék hozzáadva!", Toast.LENGTH_SHORT).show();
         nameEditText.setText("");
         categoryEditText.setText("");
@@ -69,5 +70,14 @@ public class ProductAddFragment extends Fragment {
       })
       .addOnFailureListener(e ->
         Toast.makeText(getContext(), "Hiba történt: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+  }
+  private void addToCart(Products product) {
+    db.collection("cart")
+      .add(product)
+      .addOnSuccessListener(documentReference -> {
+        Toast.makeText(getContext(), "Termék hozzáadva a kosárhoz!", Toast.LENGTH_SHORT).show();
+      })
+      .addOnFailureListener(e ->
+        Toast.makeText(getContext(), "Kosárba helyezés hiba: " + e.getMessage(), Toast.LENGTH_SHORT).show());
   }
 }

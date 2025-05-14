@@ -44,6 +44,16 @@
         android:textColor="@android:color/holo_green_dark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
+      <Button
+        android:id="@+id/addToCartButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kosárba"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@android:color/holo_blue_dark"
+        android:textColor="@android:color/white"
+        android:layout_gravity="center"/>
     </LinearLayout>
   </LinearLayout>
 </androidx.cardview.widget.CardView>

@@ -4,19 +4,23 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class CartFragment extends Fragment {
+
   private RecyclerView recyclerView;
-  private Button checkoutButton;
+  private FirebaseFirestore db;
 
   public CartFragment() {
     // Required empty public constructor
@@ -25,38 +29,60 @@ public class CartFragment extends Fragment {
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
-    // Inflate the layout for this fragment
     View rootView = inflater.inflate(R.layout.fragment_cart, container, false);
 
     recyclerView = rootView.findViewById(R.id.cartRecyclerView);
-    checkoutButton = rootView.findViewById(R.id.checkoutButton);
+    db = FirebaseFirestore.getInstance();
 
-    // Kosár adatainak betöltése
-    loadCartItems();
+    loadCartItems(); // Kosár elemeinek betöltése
 
-    // Vásárlás befejezése gomb
-    checkoutButton.setOnClickListener(v -> completePurchase());
+    // Vásárlás befejezése gomb kezelése
+    rootView.findViewById(R.id.checkoutButton).setOnClickListener(v -> {
+      Toast.makeText(getContext(), "Sikeres vásárlás!", Toast.LENGTH_SHORT).show();
+
+      // Opcionálisan: töröld a Firestore-ból a kosarat
+      db.collection("cart")
+        .get()
+        .addOnSuccessListener(snapshot -> {
+          for (QueryDocumentSnapshot doc : snapshot) {
+            doc.getReference().delete();
+          }
+          loadCartItems(); // Kosár frissítése törlés után
+        });
+    });
 
     return rootView;
   }
 
-  // Kosár elemek betöltése (például adatbázisból vagy Firebase-ből)
   private void loadCartItems() {
-    List<String> cartItems = new ArrayList<>();
-    // Tesztadatok (ezeket helyettesítheted a Firebase-ből történő lekérdezéssel)
-    cartItems.add("Alkatrész 1 - 5000 Ft");
-    cartItems.add("Alkatrész 2 - 3000 Ft");
-    cartItems.add("Alkatrész 3 - 1500 Ft");
+    db.collection("cart")
+      .get()
+      .addOnSuccessListener(queryDocumentSnapshots -> {
+        List<Products> cartItems = new ArrayList<>();
+        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+          Products product = documentSnapshot.toObject(Products.class);
+          cartItems.add(product);
+        }
 
-    // Kosár adatainak megjelenítése RecyclerView-ban
-    CartAdapter adapter = new CartAdapter(cartItems);
-    recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-    recyclerView.setAdapter(adapter);
+        // Kosár elemek megjelenítése
+        CartAdapter adapter = new CartAdapter(cartItems);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(adapter);
+      })
+      .addOnFailureListener(e -> {
+        Toast.makeText(getContext(), "Hiba történt a kosár betöltésekor.", Toast.LENGTH_SHORT).show();
+      });
   }
 
-  // Vásárlás befejezése
-  private void completePurchase() {
-    // Vásárlás logikája (pl. Firebase vagy adatbázis frissítése, rendelés létrehozása)
-    Toast.makeText(getContext(), "Vásárlás befejezve!", Toast.LENGTH_SHORT).show();
+  public void addToCart(Products product) {
+    db.collection("cart")
+      .add(product)
+      .addOnSuccessListener(documentReference -> {
+        Toast.makeText(getContext(), "Termék hozzáadva a kosárhoz!", Toast.LENGTH_SHORT).show();
+        loadCartItems(); // Kosár frissítése
+      })
+      .addOnFailureListener(e -> {
+        Toast.makeText(getContext(), "Kosárba helyezés hiba: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+      });
   }
 }
