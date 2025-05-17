@@ -3,6 +3,8 @@ package com.example.autoalkatreszshop;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 import android.widget.TextView;
 import android.widget.Button;
@@ -64,6 +66,14 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(new Intent(this, RegisterActivity.class));
             finish();
         });
+
+      Animation fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in);
+      Animation slideUp = AnimationUtils.loadAnimation(this, R.anim.slide_up);
+
+      email.startAnimation(slideUp);
+      password.startAnimation(slideUp);
+      loginBtn.startAnimation(fadeIn);
+      registerRedirect.startAnimation(fadeIn);
     }
 
     public void onForgotPasswordClick(View view) {
