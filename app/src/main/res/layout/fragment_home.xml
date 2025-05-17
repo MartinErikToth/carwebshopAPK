@@ -44,6 +44,23 @@
       app:layout_constraintEnd_toEndOf="parent"
       tools:listitem="@layout/item_product" />
 
+    <Button
+      android:id="@+id/callButton"
+      android:layout_width="wrap_content"
+      android:layout_height="48dp"
+      android:text="📞 Ügyfélszolgálat"
+      android:textAllCaps="false"
+      android:textSize="14sp"
+      android:paddingHorizontal="24dp"
+      android:backgroundTint="#2196F3"
+      android:textColor="#FFFFFF"
+      android:elevation="6dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      android:layout_marginBottom="120dp"/>
+
+
   </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>

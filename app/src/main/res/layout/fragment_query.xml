@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:padding="16dp"
+  android:background="#F5F5F5">
+
+  <LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal">
+
+    <!-- Címsor -->
+    <TextView
+      android:text="TMParts"
+      android:textSize="28sp"
+      android:textStyle="bold"
+      android:textColor="#333333"
+      android:layout_marginBottom="24dp"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content" />
+
+    <!-- Lekérdezés 1 -->
+    <TextView
+      android:id="@+id/query1Result"
+      android:text="Lekérdezés 1..."
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="12dp"
+      android:textSize="16sp"
+      android:background="@android:color/white"
+      android:textColor="#000000"
+      android:layout_marginBottom="12dp"
+      android:elevation="2dp" />
+
+    <!-- Lekérdezés 2 -->
+    <TextView
+      android:id="@+id/query2Result"
+      android:text="Lekérdezés 2..."
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="12dp"
+      android:textSize="16sp"
+      android:background="@android:color/white"
+      android:textColor="#000000"
+      android:layout_marginBottom="12dp"
+      android:elevation="2dp" />
+
+    <!-- Lekérdezés 3 -->
+    <TextView
+      android:id="@+id/query3Result"
+      android:text="Lekérdezés 3..."
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="12dp"
+      android:textSize="16sp"
+      android:background="@android:color/white"
+      android:textColor="#000000"
+      android:layout_marginBottom="12dp"
+      android:elevation="2dp" />
+
+  </LinearLayout>
+</ScrollView>

@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         selectedFragment = new ProfileFragment();
       } else if (item.getItemId() == R.id.nav_products) {
         selectedFragment = new ProductAddFragment();
+      } else if (item.getItemId() == R.id.nav_query) {
+        selectedFragment = new QueryFragment();
       }
 
       // Csak akkor cseréljük le a fragmentet, ha szükséges

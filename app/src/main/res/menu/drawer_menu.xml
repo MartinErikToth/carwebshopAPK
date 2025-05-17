@@ -15,5 +15,9 @@
     android:id="@+id/nav_profile"
     android:icon="@drawable/ic_profile"
     android:title="Profil" />
+  <item
+    android:id="@+id/nav_query"
+    android:icon="@drawable/ic_query"
+    android:title="Query" />
 
 </menu>
