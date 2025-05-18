@@ -44,11 +44,10 @@ public class HomeFragment extends Fragment {
 
     callButton.setOnClickListener(v -> {
       Intent callIntent = new Intent(Intent.ACTION_CALL);
-      callIntent.setData(Uri.parse("tel:+36201112222")); // ügyfélszolgálati szám
+      callIntent.setData(Uri.parse("tel:+36201112222"));
 
       if (ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.CALL_PHONE)
         != PackageManager.PERMISSION_GRANTED) {
-        // Kérjük a hívás engedélyt
         ActivityCompat.requestPermissions(requireActivity(),
           new String[]{android.Manifest.permission.CALL_PHONE}, 1);
       } else {

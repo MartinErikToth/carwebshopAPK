@@ -29,14 +29,10 @@ public class AlarmReceiver extends BroadcastReceiver {
       if (manager != null) manager.createNotificationChannel(channel);
     }
 
-    // 🔒 Ellenőrzés: van-e engedély értesítésre
     if (ActivityCompat.checkSelfPermission(context, android.Manifest.permission.POST_NOTIFICATIONS)
       != PackageManager.PERMISSION_GRANTED) {
-      // Nincs engedély → nem küldünk értesítést
       return;
     }
-
-    // ✅ Értesítés létrehozása
     NotificationCompat.Builder builder = new NotificationCompat.Builder(context, channelId)
       .setContentTitle(title)
       .setContentText(message)

@@ -13,7 +13,6 @@ public class CartItem {
     this.productImageUrl = productImageUrl;
   }
 
-  // Getterek és setterek
   public String getProductName() {
     return productName;
   }

@@ -12,8 +12,6 @@ public class MyJobService extends JobService {
   @Override
   public boolean onStartJob(JobParameters params) {
     Log.d("JobService", "Job elindult!");
-
-    // Notification
     NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
     String channelId = "job_channel";
     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
@@ -27,8 +25,6 @@ public class MyJobService extends JobService {
       .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
     manager.notify(3, builder.build());
-
-    // Itt fejezzük be a munkát
     jobFinished(params, false);
     return true;
   }
@@ -36,6 +32,6 @@ public class MyJobService extends JobService {
   @Override
   public boolean onStopJob(JobParameters params) {
     Log.d("JobService", "Job megszakadt.");
-    return true; // Újrapróbálható legyen
+    return true;
   }
 }

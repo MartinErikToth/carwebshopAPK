@@ -57,7 +57,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
       .load(product.getImageUrl())
       .into(holder.image);
 
-    // Kosárba helyezés
+
     holder.addToCartButton.setOnClickListener(v -> {
       FirebaseFirestore db = FirebaseFirestore.getInstance();
       db.collection("cart")

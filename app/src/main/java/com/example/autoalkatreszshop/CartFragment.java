@@ -27,9 +27,7 @@ public class CartFragment extends Fragment {
   private RecyclerView recyclerView;
   private FirebaseFirestore db;
 
-  public CartFragment() {
-    // Required empty public constructor
-  }
+  public CartFragment() {}
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,20 +37,18 @@ public class CartFragment extends Fragment {
     recyclerView = rootView.findViewById(R.id.cartRecyclerView);
     db = FirebaseFirestore.getInstance();
 
-    loadCartItems(); // Kosár elemeinek betöltése
+    loadCartItems();
 
-    // Vásárlás befejezése gomb kezelése
     rootView.findViewById(R.id.checkoutButton).setOnClickListener(v -> {
       Toast.makeText(getContext(), "Sikeres vásárlás!", Toast.LENGTH_SHORT).show();
 
-      // Opcionálisan: töröld a Firestore-ból a kosarat
       db.collection("cart")
         .get()
         .addOnSuccessListener(snapshot -> {
           for (QueryDocumentSnapshot doc : snapshot) {
             doc.getReference().delete();
           }
-          loadCartItems(); // Kosár frissítése törlés után
+          loadCartItems();
         });
     });
 
@@ -69,7 +65,6 @@ public class CartFragment extends Fragment {
           cartItems.add(product);
         }
 
-        // Kosár elemek megjelenítése
         CartAdapter adapter = new CartAdapter(cartItems);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);

@@ -57,7 +57,7 @@ public class ProductAddFragment extends Fragment {
 
     productSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
       @Override public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        if (position > 0) { // 0 = válassz terméket
+        if (position > 0) {
           DocumentSnapshot doc = productSnapshots.get(position - 1);
           currentProductId = doc.getId();
           Products product = doc.toObject(Products.class);

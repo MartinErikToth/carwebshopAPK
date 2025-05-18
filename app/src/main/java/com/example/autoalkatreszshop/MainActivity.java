@@ -23,19 +23,16 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    // Ha most nyitjuk meg az Activity-t (nem állítunk vissza előző állapotot), betöltjük a kezdő fragmentet
     if (savedInstanceState == null) {
       getSupportFragmentManager().beginTransaction()
         .replace(R.id.fragment_container, new HomeFragment())
         .commit();
     }
 
-    // Bottom Navigation beállítása
     BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
     bottomNav.setOnItemSelectedListener(item -> {
       Fragment selectedFragment = null;
 
-      // A navigációs menüből választott fragment
       if (item.getItemId() == R.id.nav_home) {
         selectedFragment = new HomeFragment();
       } else if (item.getItemId() == R.id.nav_cart) {
@@ -48,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         selectedFragment = new QueryFragment();
       }
 
-      // Csak akkor cseréljük le a fragmentet, ha szükséges
       if (selectedFragment != null) {
         getSupportFragmentManager().beginTransaction()
           .replace(R.id.fragment_container, selectedFragment)
@@ -58,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
       return true;
     });
 
-    // Kijelöljük alapból a home itemet
     bottomNav.setSelectedItemId(R.id.nav_home);
   }
 }
