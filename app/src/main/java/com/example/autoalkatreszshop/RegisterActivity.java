@@ -2,6 +2,8 @@ package com.example.autoalkatreszshop;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 import android.widget.TextView;
 import android.widget.Button;
@@ -51,5 +53,13 @@ public class RegisterActivity extends AppCompatActivity {
             startActivity(new Intent(this, LoginActivity.class));
             finish();
         });
+
+      Animation fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in);
+      Animation slideUp = AnimationUtils.loadAnimation(this, R.anim.slide_up);
+
+      email.startAnimation(slideUp);
+      password.startAnimation(slideUp);
+      registerBtn.startAnimation(fadeIn);
+      loginRedirect.startAnimation(fadeIn);
     }
 }
